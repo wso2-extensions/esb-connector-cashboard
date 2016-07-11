@@ -1262,14 +1262,14 @@ public class CashboardConnectorIntegrationTest extends ConnectorIntegrationTestB
     }
     
     /**
-     * Test case: testListInvoicesWithMandatoryParameters. 
-     * Status: Skipped. 
+     * Test case: testListInvoicesWithMandatoryParameters.
+     * Status: Skipped.
      * Reason : There are no any mandatory parameters for the function invocation.
      */
-    
+
     /**
      * Positive test case for listInvoices method with optional parameters.
-     * 
+     *
      * @throws ParserConfigurationException
      * @throws IOException
      * @throws SAXException
@@ -1279,19 +1279,19 @@ public class CashboardConnectorIntegrationTest extends ConnectorIntegrationTestB
     @Test(groups = { "wso2.esb" }, description = "cashboard {listInvoices} integration test with optional parameters.")
     public void testListInvoicesWithOptionalParameters() throws XPathExpressionException, XMLStreamException,
             SAXException, IOException, ParserConfigurationException {
-        
+
         esbRequestHeadersMap.put("Action", "urn:listInvoices");
         final RestResponse<OMElement> esbRestResponse =
                 sendXmlRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_listInvoices_optional.xml");
-        
+
         final String apiEndPoint =
                 apiUrl + "/invoices.xml?has_been_sent=" + connectorProperties.getProperty("hasBeenSent")
                         + "&has_been_paid=" + connectorProperties.getProperty("hasBeenPaid") + "&client_id="
                         + connectorProperties.getProperty("clientCompanyId") + "&client_type="
                         + connectorProperties.getProperty("clientTypeCompany");
-        
+
         final RestResponse<OMElement> apiRestResponse = sendXmlRestRequest(apiEndPoint, "GET", apiRequestHeadersMap);
-        
+
         Assert.assertEquals(getValueByExpression("count(//invoice)", esbRestResponse.getBody()), getValueByExpression(
                 "count(//invoice)", apiRestResponse.getBody()));
         Assert.assertEquals(getValueByExpression("//invoice[0]/id", esbRestResponse.getBody()), getValueByExpression(

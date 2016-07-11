@@ -54,8 +54,8 @@
             apiParameters += "updated_since=" + updatedSince + '&';
          }
          if (apiParameters != "") {
-            apiParameters = '?' + apiParameters.substring(0, apiParameters.length - 1);
-            mc.setProperty('uri.var.apiParameters', apiParameters);
+           apiParameters = '?' + apiParameters.toString().substring(0, apiParameters.toString().lastIndexOf("&"));
+           mc.setProperty('uri.var.apiParameters', apiParameters);
          } 
          ]]>
         </script>
