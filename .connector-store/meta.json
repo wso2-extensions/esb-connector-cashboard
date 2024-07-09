@@ -1,0 +1,21 @@
+{
+    "name": "Cashboard",
+    "owner": "WSO2",
+    "category": "Issue Tracking and Project Management",
+    "documentationUrl": "https://docs.wso2.com/display/ESBCONNECTORS/Cashboard+Connector",
+    "description": "The Cashboard connector allows you to access the Cashboard REST API through WSO2 ESB. Cashboard is a freelance time tracking, online invoice and project management software. ",
+    "status": "Unsupported",
+    "labels": [
+        "connector"
+    ],
+    "releases": [
+        {
+            "tagName": "v1.0.1",
+            "products": [
+                "ESB 5.0.0",
+                "ESB 4.9.0"
+            ],
+            "isHidden": false
+        }
+    ]
+}
